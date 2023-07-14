@@ -4,13 +4,18 @@
 import '../styles/layout.css'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 export default function SideMenu() {
   const [collapse, setCollapse] = useState(false)
 
   function hanldeCollapse() {
     setCollapse(!collapse)
+  }
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    console.log('success')
   }
 
   return (
@@ -40,7 +45,15 @@ export default function SideMenu() {
             className="bx bx-search absolute h-full pr-1 z-10 text-center"
             onClick={hanldeCollapse}
           ></i>
-          <input className="search-bar" type="text" placeholder="搜尋" />
+          <form
+            method="GET"
+            onSubmit={(e) => {
+              handleSubmit(e)
+            }}
+          >
+            <input className="search-bar" type="text" placeholder="搜尋" />
+            <button hidden type="submit"></button>
+          </form>
           <span className="tool-tip">搜尋</span>
         </li>
         <li>
@@ -51,21 +64,21 @@ export default function SideMenu() {
           <span className="tool-tip">首頁</span>
         </li>
         <li>
-          <Link href="/my">
+          <Link href="/my-forum">
             <i className="bx bx-bookmark-heart"></i>
             <span className={`link-name`}>我的討論版</span>
           </Link>
           <span className="tool-tip">我的討論版</span>
         </li>
         <li>
-          <Link href="/">
+          <Link href="/overview">
             <i className="bx bx-category"></i>
             <span className={`link-name`}>所有討論版</span>
           </Link>
           <span className="tool-tip">所有討論版</span>
         </li>
         <li>
-          <Link href="/">
+          <Link href="/member-center">
             <i className="bx bx-user"></i>
             <span className={`link-name`}>會員中心</span>
           </Link>
@@ -73,7 +86,7 @@ export default function SideMenu() {
         </li>
 
         <li>
-          <Link href="/">
+          <Link href="/settings">
             <i className="bx bx-cog"></i>
             <span className={`link-name`}>設定</span>
           </Link>
