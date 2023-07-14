@@ -21,8 +21,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <SideMenu />
-        <main className="main-content absolute h-full">{children}</main>
+        <div className="flex">
+          <SideMenu />
+          <main className="h-full">{children}</main>
+        </div>
       </body>
     </html>
   )

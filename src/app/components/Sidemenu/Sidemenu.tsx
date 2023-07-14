@@ -15,7 +15,6 @@ export default function SideMenu() {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    console.log('success')
   }
 
   return (
