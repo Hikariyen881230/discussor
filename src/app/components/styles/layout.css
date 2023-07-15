@@ -1,3 +1,4 @@
+/* Sidebar */
 .sidebar{
     width: 78px;
     transition: all .3s ease;
@@ -92,7 +93,7 @@
 
 .menu-list li a:hover{
     transition: .3s;
-    color: #11101d;
+    color: rgb(17, 16, 29);
     background: #fff;
 }
 
@@ -126,4 +127,39 @@
     transition: .2s;
     display: flex;
     pointer-events: auto;
+}
+
+/* Topics */
+.topic{
+    color: #242424;
+    -webkit-text-stroke: 1px #282828;
+    text-shadow: 0px 1px 2px #282828;
+}
+.card-topics{
+    /* background: rgba(17, 16, 29); */
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(79, 102, 129, 0.92);
+}
+.slick-arrow::before{
+    display: none;
+}
+.bxs-right-arrow,.bxs-left-arrow{
+    color: #073050e3;
+}
+.bxs-right-arrow:hover,.bxs-left-arrow:hover{
+    transition: .1s;
+    color: #313131e1;
+}
+.card{
+    border: 1px solid #cfcfcf;
+    background-color: #073050;
+    background-image: linear-gradient(213deg, #073050e3 0%, #755a65d3 55%, #313131e1 100%);
+}
+.card:hover{
+    transition: .3s;
+    letter-spacing: .2rem;
+    color: #f3f3f3;
+    background-color: #0a4069;
+    background-image: linear-gradient(213deg, #0a4069 0%, #92717ed3 55%, #474747e1 100%);
 }
