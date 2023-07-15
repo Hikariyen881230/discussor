@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import React, { useState } from 'react'
 
-export default function SideMenu() {
+const SideMenu: React.FC = () => {
   const [collapse, setCollapse] = useState(false)
 
   function hanldeCollapse() {
@@ -115,3 +115,5 @@ export default function SideMenu() {
     </div>
   )
 }
+
+export default SideMenu

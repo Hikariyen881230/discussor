@@ -20,10 +20,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>
-        <div className="flex">
+      <body className="h-screen">
+        <div className="flex h-full">
           <SideMenu />
-          <main className="h-full">{children}</main>
+          <main className="flex-1 overflow-y-auto">{children}</main>
         </div>
       </body>
     </html>
