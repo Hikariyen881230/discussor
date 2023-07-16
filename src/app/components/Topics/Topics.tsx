@@ -83,14 +83,14 @@ const Topics: React.FC = () => {
     dots: false,
     infinite: false,
     speed: 400,
-    slidesToShow: 4,
+    slidesToShow: 5,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    slidesToScroll: 4,
+    slidesToScroll: 5,
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1200,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -99,15 +99,16 @@ const Topics: React.FC = () => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 960,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2,
+          infinite: true,
+          dots: false,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 640,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

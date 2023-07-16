@@ -19,7 +19,7 @@ const SideMenu: React.FC = () => {
 
   return (
     <div
-      className={`sidebar relative h-screen px-4 py-2 bg-slate-900 ${
+      className={`sidebar absolute z-50 sm:relative h-screen px-4 py-2 bg-slate-900 ${
         !collapse ? 'active' : ''
       }`}
     >
