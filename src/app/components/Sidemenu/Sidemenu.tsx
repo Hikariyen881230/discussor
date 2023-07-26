@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 
 const SideMenu: React.FC = () => {
   const [collapse, setCollapse] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   function hanldeCollapse() {
     setCollapse(!collapse)
@@ -94,22 +95,32 @@ const SideMenu: React.FC = () => {
       </ul>
       <div className="porfile-content text-white absolute bottom-0 left-0 w-full">
         <div className="profile relative py-3 h-20 w-full flex items-center flex-wrap">
-          <div className="porfile-details h-full flex items-center py-2 -ml-6">
-            <Image
-              className="rounded-md object-cover"
-              src="/avatar.jpg"
-              width={45}
-              height={45}
-              alt=""
-            />
-            <div className="ml-3">
-              <div className="name font-medium text-lg">Keith</div>
-              <div className="career font-light">Web Developer</div>
-            </div>
-          </div>
-          <button className="btn-logout -mr-4">
-            <i className="bx bx-log-out text-2xl h-full"></i>
-          </button>
+          {isLoggedIn ? (
+            <>
+              <div className="porfile-details h-full flex items-center py-2 -ml-6">
+                <Image
+                  className="rounded-md object-cover"
+                  src="/avatar.jpg"
+                  width={45}
+                  height={45}
+                  alt=""
+                />
+                <div className="ml-3">
+                  <div className="name font-medium text-lg">Keith</div>
+                  <div className="career font-light">Web Developer</div>
+                </div>
+              </div>
+              <button className="btn-logout -mr-4">
+                <i className="bx bx-log-out text-2xl h-full"></i>
+              </button>
+            </>
+          ) : (
+            <>
+              <Link className="text-md" href={'/login'}>
+                登入/註冊
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>

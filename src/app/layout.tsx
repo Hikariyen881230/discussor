@@ -24,7 +24,7 @@ export default function RootLayout({
         <div className="flex h-full relative">
           <SideMenu />
           <main className="relative flex-1 overflow-y-scroll sm:overflow-y-auto m-0 sm:m-3">
-            <div className="absolute left-24 sm:static">{children}</div>
+            <div className="absolute left-24 sm:static w-full">{children}</div>
           </main>
         </div>
       </body>
