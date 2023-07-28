@@ -5,10 +5,12 @@ import '../styles/layout.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import React, { useState } from 'react'
+import { useSession, signOut, signIn } from 'next-auth/react'
 
 const SideMenu: React.FC = () => {
   const [collapse, setCollapse] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const { data: session } = useSession()
 
   function hanldeCollapse() {
     setCollapse(!collapse)
@@ -95,7 +97,7 @@ const SideMenu: React.FC = () => {
       </ul>
       <div className="porfile-content text-white absolute bottom-0 left-0 w-full">
         <div className="profile relative py-3 h-20 w-full flex items-center flex-wrap">
-          {isLoggedIn ? (
+          {session && session.user ? (
             <>
               <div className="porfile-details h-full flex items-center py-2 -ml-6">
                 <Image
@@ -106,19 +108,31 @@ const SideMenu: React.FC = () => {
                   alt=""
                 />
                 <div className="ml-3">
-                  <div className="name font-medium text-lg">Keith</div>
+                  <div className="name font-medium text-lg">
+                    {session.user.name || session.user.email}
+                  </div>
                   <div className="career font-light">Web Developer</div>
                 </div>
               </div>
-              <button className="btn-logout -mr-4">
+              <button
+                className="btn-logout -mr-4"
+                onClick={() => {
+                  signOut()
+                }}
+              >
                 <i className="bx bx-log-out text-2xl h-full"></i>
               </button>
             </>
           ) : (
             <>
-              <Link className="text-md" href={'/login'}>
+              <button
+                className="text-md"
+                onClick={() => {
+                  signIn()
+                }}
+              >
                 登入/註冊
-              </Link>
+              </button>
             </>
           )}
         </div>

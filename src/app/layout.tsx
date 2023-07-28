@@ -1,5 +1,6 @@
 import './globals.css'
 import SideMenu from './components/Sidemenu/Sidemenu'
+import Providers from './components/Providers/Providers'
 
 export const metadata = {
   title: 'Discussor',
@@ -21,12 +22,16 @@ export default function RootLayout({
         />
       </head>
       <body className="h-screen relative">
-        <div className="flex h-full relative">
-          <SideMenu />
-          <main className="relative flex-1 overflow-y-scroll sm:overflow-y-auto m-0 sm:m-3">
-            <div className="absolute left-24 sm:static w-full">{children}</div>
-          </main>
-        </div>
+        <Providers>
+          <div className="flex h-full relative">
+            <SideMenu />
+            <main className="relative flex-1 overflow-y-scroll sm:overflow-y-auto m-0 sm:m-3">
+              <div className="absolute left-24 sm:static w-full">
+                {children}
+              </div>
+            </main>
+          </div>
+        </Providers>
       </body>
     </html>
   )
