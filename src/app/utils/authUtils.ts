@@ -46,17 +46,6 @@ export const SignUpSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 export const LogInSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
   event.preventDefault()
   const formData = getFormData(event)
-
-  // try {
-  //   const response = await axios.request({
-  //     method: 'post',
-  //     url: '/api/login',
-  //     data: { email: formData.email, password: formData.password },
-  //   })
-  //   console.log(response.data)
-  // } catch (error) {
-  //   console.error('Login failed:', error)
-  // }
   const result = await signIn('credentials', {
     email: formData.email,
     password: formData.password,
@@ -69,4 +58,8 @@ export const LogInSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     .catch(() => {
       alert('登入失敗!')
     })
+}
+
+export const postSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  event.preventDefault()
 }

@@ -97,6 +97,7 @@ textarea{
 }
 .tag-box ul{
     border: 1px solid #112b8875;
+    flex-wrap: wrap;
 }
 .tag-box ul li{
     margin: 4px 3px;
