@@ -2,11 +2,12 @@
 
 import Topics from './components/Topics/Topics'
 import QuestionCard from './components/QuestionCard/QuestionCard'
+import PostButton from './components/PostButton/PostButton'
 import Link from 'next/link'
 
 export default function Home() {
   return (
-    <div className="pl-1 md:px-12 pt-8">
+    <div className="pl-1 md:px-12 pt-8 relative">
       <div>
         <h2 className="text-3xl font-normal topic tracking-wider">
           <i className="bx bx-home-alt pr-1"></i>
@@ -39,8 +40,13 @@ export default function Home() {
           <QuestionCard />
           <QuestionCard />
           <QuestionCard />
+          <QuestionCard />
+          <QuestionCard />
+          <QuestionCard />
+          <QuestionCard />
         </div>
       </div>
+      <PostButton position="sticky" left="left-[100%]" bottom="bottom-2" />
     </div>
   )
 }
