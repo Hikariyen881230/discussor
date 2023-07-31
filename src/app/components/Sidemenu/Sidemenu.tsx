@@ -12,6 +12,8 @@ const SideMenu: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const { data: session } = useSession()
 
+  console.log(session?.user?.image)
+
   function hanldeCollapse() {
     setCollapse(!collapse)
   }
@@ -102,16 +104,23 @@ const SideMenu: React.FC = () => {
               <div className="porfile-details h-full flex items-center py-2 -ml-6">
                 <Image
                   className="rounded-md object-cover"
-                  src="/avatar.jpg"
+                  // TODO: adding an upload function in the future
+                  src={'/avatar.png'}
                   width={45}
                   height={45}
                   alt=""
                 />
                 <div className="ml-3">
+                  <div className="career font-light">Hello,</div>
                   <div className="name font-medium text-lg">
-                    {session.user.name || session.user.email}
+                    {session.user.name ? (
+                      session.user.name
+                    ) : (
+                      <Link className="hover:underline" href={'/member-center'}>
+                        Unknown
+                      </Link>
+                    )}
                   </div>
-                  <div className="career font-light">Web Developer</div>
                 </div>
               </div>
               <button
