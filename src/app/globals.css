@@ -30,9 +30,18 @@ main{
 /* width */
 main::-webkit-scrollbar {
     width: 10px;
-  }
+}
+textarea::-webkit-scrollbar {
+    width: 10px;
+}
 /* Track */
 main::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 8px 8px transparent;
+    background: transparent; 
+    width: 10px;
+    border-radius: 12px;
+}
+textarea::-webkit-scrollbar-track {
     box-shadow: inset 0 0 8px 8px transparent;
     background: transparent; 
     width: 10px;
@@ -45,13 +54,69 @@ main::-webkit-scrollbar-thumb {
     border: 3px solid transparent;
     background: transparent; 
     border-radius: 12px;
-    
+}
+textarea::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 8px 8px #3e4357a4;
+    border: 3px solid transparent;
+    background: transparent; 
+    border-radius: 12px;
 }
   
 /* Handle on hover */
 main::-webkit-scrollbar-thumb:hover {
     background: transparent; 
 }
+textarea::-webkit-scrollbar-thumb:hover {
+    background: transparent; 
+}
+
+/* input & textarea */
 input{
+    caret-color: none;
+}
+input:focus{
     caret-color: auto;
+}
+textarea:focus{
+    caret-color: auto;
+}
+textarea{
+      /* 設定最小高度 */
+    min-height: 600px; /* 請根據需要調整最小高度值 */
+    resize: none;
+    /* 設定文本框的高度自動延展 */
+    word-wrap: break-word;
+    height: auto;
+}
+.post-input{
+    outline: none;
+    border: 1px solid #112b8875;
+    border-radius: 4px;
+    width: 100%;
+    padding: 5px 9px;
+}
+.tag-box ul{
+    border: 1px solid #112b8875;
+}
+.tag-box ul li{
+    margin: 4px 3px;
+    background: #f2f2f2;
+    border-radius: 4px;
+    padding: 5px 8px 5px 10px;
+    border: 1px solid #e4e4e4;
+}
+.tag-box ul li i{
+    height: 20px;
+    width: 20px;
+    font-size: 12px;
+    margin-left: 8px;
+    color: #808080;
+    background-color: #dfdfdf;
+    border-radius: 50%;
+    justify-content: center;
+    cursor: pointer;
+}
+.tag-box ul li,.tag-box ul li i{
+    display: flex;
+    align-items: center;
 }
