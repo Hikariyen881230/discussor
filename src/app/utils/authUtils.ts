@@ -31,9 +31,10 @@ export const SignUpSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         })
         .then(() => {
           alert('註冊成功!')
+          window.location.href = '/login'
         })
-        .catch(() => {
-          alert('發生錯誤，請稍後再試!')
+        .catch((err) => {
+          alert(`發生錯誤，請稍後再試! ERROR:${err}`)
         })
     } catch (error) {
       console.error('regist failed:', error)
