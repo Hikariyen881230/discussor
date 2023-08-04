@@ -49,20 +49,32 @@ model Post {
   title     String
   content   String
   createdAt DateTime @default(now())
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  String   @db.ObjectId
+  updatedAt DateTime @updatedAt
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
+  published Boolean  @default(false)
+  tagIds    String[] @db.ObjectId
+  tags      Tag[]    @relation(fields: [tagIds], references: [id])
 
   comments Comment[]
+}
+
+model Tag {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  postIds String[] @db.ObjectId
+  post    Post[]   @relation(fields: [postIds], references: [id])
 }
 
 model Comment {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   content   String
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   post   Post   @relation(fields: [postId], references: [id])
   postId String @db.ObjectId
 
-  author   User   @relation(fields: [authorId], references: [id])
-  authorId String @db.ObjectId
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id])
 }
