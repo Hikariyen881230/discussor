@@ -2,16 +2,19 @@
 
 import React, { useState } from 'react'
 import Button from '../Button/Button'
-import { postSubmit } from '@/app/utils/authUtils'
+import { postSubmit } from '@/app/utils/postUtils'
+import { useSession } from 'next-auth/react'
 
 type Props = {}
 
 const PostForm = (props: Props) => {
   const [tags, setTags] = useState<string[]>([])
   const [newTag, setNewTag] = useState<string>('')
+  const { data: session } = useSession()
 
   function addTag(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === 'Enter') {
+      event.preventDefault()
       const tag = newTag.replace(/\s+/g, ' ').trim()
       if (tag.length > 0 && !tags.includes(tag)) {
         const newTags = tag.split(',')
@@ -82,7 +85,16 @@ const PostForm = (props: Props) => {
                   onChange={(e) => {
                     setNewTag(e.target.value)
                   }}
-                  onKeyDown={addTag}
+                  onKeyDown={(e) => {
+                    addTag(e)
+                  }}
+                />
+                <input type="text" name="tags" hidden defaultValue={tags} />
+                <input
+                  type="text"
+                  name="userId"
+                  hidden
+                  defaultValue={session?.user.id}
                 />
               </ul>
             </div>

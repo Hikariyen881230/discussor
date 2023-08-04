@@ -60,7 +60,3 @@ export const LogInSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       alert('登入失敗!')
     })
 }
-
-export const postSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  event.preventDefault()
-}
