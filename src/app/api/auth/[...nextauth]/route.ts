@@ -58,6 +58,18 @@ export const authOptions: AuthOptions = {
     strategy: 'jwt',
   },
   debug: process.env.NODE_EN === 'development',
+  callbacks: {
+    async session({ session, token }) {
+      session.user.id = token.sub
+      return session
+    },
+    jwt: async ({ user, token }) => {
+      if (user) {
+        token.sub = user.id
+      }
+      return token
+    },
+  },
 }
 
 const handler = NextAuth(authOptions)
